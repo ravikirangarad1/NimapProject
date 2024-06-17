@@ -1,0 +1,91 @@
+<div class="background-image">
+<div class="container mt-6">
+    <div class="row justify-content-center">
+      <div class="col-md-6 text-center mb-3">
+        <h2 class="fw-bold">I am looking for...</h2>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control" placeholder="Enter a Job Description" aria-label="Job Description" aria-describedby="basic-addon2">
+          <div class="input-group-append">
+            <button class="btn btn-outline-secondary" type="button">Search</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="fullTime" value="fullTime">
+          <label class="form-check-label" for="fullTime">Full Time</label>
+        </div>
+        <div class="form-check form-check-inline">
+          <input class="form-check-input" type="checkbox" id="partTime" value="partTime">
+          <label class="form-check-label" for="partTime">Part Time</label>
+        </div>
+        <select class="form-select mt-2" aria-label="City">
+          <option selected>Choose City...</option>
+          <option value="pune">Pune</option>
+          <option value="mumbai">Mumbai</option>
+          <option value="bangalore">Bangalore</option>
+        </select>
+      </div>
+    </div>
+    <div class="row justify-content-center mt-3">
+      <div class="col-md-6">
+        <button type="button" class="btn btn-primary btn-block" (click)="openpopup()">Register</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-4">
+    <!-- Footer -->
+    <footer class="footer bg-light">
+      <div class="container text-start">
+        <span class="text-muted small">Copyright @ 2014 Two Bytes Consulting Terms & Policies</span>
+      </div>
+    </footer>
+    <!-- End of Footer -->
+  </div>
+  
+  
+  
+</div>
+
+<div class="container">
+  <h1>Welcome to Our Homepage</h1>
+  
+  <div *ngIf="formData">
+    <h2>Submitted Form Details:</h2>
+    <div>
+      <strong>First Name:</strong> {{ formData.firstName }}
+    </div>
+    <div>
+      <strong>Last Name:</strong> {{ formData.lastName }}
+    </div>
+    <div>
+      <strong>Email:</strong> {{ formData.email }}
+    </div>
+    <div>
+      <strong>Phone Number:</strong> {{ formData.phoneNumber }}
+    </div>
+    <div>
+      <strong>Age:</strong> {{ formData.age }} years
+    </div>
+    <div>
+      <strong>State:</strong> {{ formData.state }}
+    </div>
+    <div>
+      <strong>Country:</strong> {{ formData.country }}
+    </div>
+    <div>
+      <strong>Address:</strong> {{ formData.address }}
+    </div>
+    <div>
+      <strong>Tags:</strong> {{ formData.tags }}
+    </div>
+    <!-- Add more fields as needed -->
+  </div>
+</div>

@@ -1,0 +1,9 @@
+
+.background-image {
+    background-image: url('/assets/computerimg.jpg.avif'); /* Adjust the file name if needed */
+    background-size: cover; /* Cover the entire container */
+    background-position: center; /* Center the background image */
+    /* Add other background properties as needed */
+    height: 100vh; /* Set height to full viewport height */
+}
+

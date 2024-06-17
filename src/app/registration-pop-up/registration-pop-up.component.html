@@ -1,0 +1,119 @@
+<form class="row g-3 needs-validation" novalidate>
+  <div class="col-md-6">
+    <div class="col-md-6">
+      <!-- Input for uploading photo -->
+      <div *ngIf="!selectedImage">
+        <img src="../assets/blank-profile-male.jpg" alt="Default Image" class="selected-image" />
+      </div>
+      <div *ngIf="selectedImage">
+        <!-- Display the selected image -->
+        <img [src]="selectedImage" alt="Selected Image" class="selected-image" />
+      </div>
+      <label class="custom-file-upload">
+        Upload your file
+        <input type="file" (change)="onFileSelected($event)" accept="image/*" />
+      </label>
+    </div>
+    
+    <!-- <div>
+      <label for="profilePhoto" class="form-label">Upload your photo</label>
+      <input type="file" class="form-control" id="profilePhoto" accept="image/*">
+    </div> -->
+  </div>
+  <div class="col-md-6">
+    <div class="col-md-12">
+      <label for="validationCustom01" class="form-label">First name</label>
+      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="col-md-12">
+      <label for="validationCustom02" class="form-label">Last name</label>
+      <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
+      <div class="valid-feedback">
+        Looks good!
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email address</label>
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="form-group">
+      <label for="phone">Phone Number</label>
+      <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+    </div>
+
+    <div class="col-md-6">
+      <div class="col-md-12">
+        <label for="ageSlider" class="form-label">Age</label>
+        <input type="range" class="form-range" id="ageSlider" min="20" max="60" step="1" value="20" (change)="onAgeChange($event)" />
+        <span>{{ selectedAge }}</span> years <!-- Display selected age dynamically -->
+      </div>
+    </div>
+
+    <div class="col-12">
+      <label for="validationCustom04" class="form-label">State</label>
+      <select class="form-select" id="validationCustom04" required>
+        <option selected disabled value="">Choose...</option>
+        <option>...</option>
+      </select>
+      <div class="invalid-feedback">
+        Please select a valid state.
+      </div>
+    </div>
+    <div class="col-12">
+      <label for="validationCustom04" class="form-label">Country</label>
+      <select class="form-select" id="validationCustom04" required>
+        <option selected disabled value="">Choose...</option>
+        <option>...</option>
+      </select>
+      <div class="invalid-feedback">
+        Please select a valid state.
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input type="text" class="form-control" id="address" placeholder="Enter your address">
+      </div>
+    </div>
+    <div class="col-md-12">
+      <div class="form-group">
+        <label for="tags">Tags</label>
+        <input type="text" class="form-control" id="tags" list="tagOptions" placeholder="Enter tags">
+        <datalist id="tagOptions">
+          <option value="HTML">
+          <option value="CSS">
+          <option value="JavaScript">
+          <option value="Angular">
+          <option value="React">
+          <!-- Add more options as needed -->
+        </datalist>
+      </div>
+    </div>
+    <div class="col-md-3">
+      <label for="validationCustom05" class="form-label">Zip</label>
+      <input type="text" class="form-control" id="validationCustom05" required>
+      <div class="invalid-feedback">
+        Please provide a valid zip.
+      </div>
+    </div>
+    <div class="col-12">
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+        <label class="form-check-label" for="invalidCheck">
+          Subscribe to newsletter
+        </label>
+        <div class="invalid-feedback">
+          You must agree before submitting.
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+    <button class="btn btn-light me-md-2" type="button">Cancel</button>
+    <button class="btn btn-primary" type="button">Submit</button>
+  </div>
+</form>

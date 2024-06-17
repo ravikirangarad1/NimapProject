@@ -1,0 +1,26 @@
+.test{
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .form-container .col-md-4 {
+    flex: 0 0 33.33%; /* Adjust width as needed */
+  }
+  .selected-image {
+    height: 200px;
+    width: 150px;
+    margin-top: 10px;
+  }
+  .custom-file-upload {
+    display: inline-block;
+    padding: 10px 15px;
+    color: #007bff;
+    
+    cursor: pointer;
+    border-radius: 5px;
+  }
+  
+  .custom-file-upload input[type='file'] {
+    display: none;
+  }
+  
