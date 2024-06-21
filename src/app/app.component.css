@@ -30,3 +30,21 @@
     color: lightgray;
   }
   
+  .navbar-nav {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-bottom: 20px;
+  }
+  #navBar{
+    background-color: rgb(86, 159, 253);
+  }
+  .demo-app-box {
+    background-color: rgb(86, 159, 253);
+    border: 1px solid rgb(86, 159, 253);
+    padding: 10px;
+    margin-left: 150px;
+    font-weight: bold;
+    display: inline-block;
+
+  }
+  

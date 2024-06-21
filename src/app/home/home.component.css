@@ -1,9 +1,126 @@
 
 .background-image {
-    background-image: url('/assets/computerimg.jpg.avif'); /* Adjust the file name if needed */
+    background-image: url('/assets/background.jpg'); /* Adjust the file name if needed */
     background-size: cover; /* Cover the entire container */
     background-position: center; /* Center the background image */
     /* Add other background properties as needed */
     height: 100vh; /* Set height to full viewport height */
 }
+.footer{
+    /* margin-top: 210px; */
+}
+.content{
+    margin-top: 100px;
+}
+#search-btn{
+    background-color: rgb(46, 136, 219);
+    margin-left: 20px;
+}
+#heading{
+    margin-top: 50px;
+    color: white;
+}
+.container2{
+    align-items: center;
+}
+body, html {
+    height: 100%;
+    margin: 0;
+  }
+  
+  .ctn {
+    background-color: rgb(193, 202, 211);
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container2 {
+    text-align: center;
+    max-width: 600px; /* Adjust based on your preference */
+    margin: 20px; /* Optional: To ensure it doesn't touch screen edges */
+  }
+  
+  .container2 hr {
+    width: 100%;
+    margin: 20px 0;
+  }
+  .demo-app-box {
+    border: 4px solid rgb(86, 159, 253);
+    border-radius: 8px;
+    padding: 10px;
+    /* font-weight: bold; */
+    display: inline-block;
+    margin-top: 15px;
+    color: rgb(86, 159, 253);;
+  }
 
+  .ctn3 {
+    background-color: rgb(4, 19, 34);
+    height: 350px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .container3 {
+    text-align: center;
+    max-width: 600px; /* Adjust based on your preference */
+    margin: 20px; /* Optional: To ensure it doesn't touch screen edges */
+  }
+  
+  .demo-app-box1 {
+    border: 4px solid rgb(86, 159, 253);
+    border-radius: 8px;
+    padding: 10px;
+    display: inline-flex;
+    align-items: center;
+    margin-top: 15px;
+    color: white;
+    font-style: italic;
+    width: 300px;
+  }
+  
+  .demo-app-box1 span {
+    margin-right: 10px;
+  }
+  
+  .demo-app-box1 i {
+    margin-left: 85px;
+    font-size: 24px;
+    color: white;
+  }
+  
+  .container3 h6 {
+    color: white;
+    font-style: italic;
+  }
+  body, html {
+  height: 100%;
+  margin: 0;
+}
+
+.footer {
+  /* position: fixed; */
+  bottom: 0;
+  width: 100%;
+  padding: 10px 0;
+  background-color: #f8f9fa; /* Ensures background color */
+}
+
+.footer .container-fluid {
+  padding: 0 20px;
+}
+
+.footer .text-muted {
+  color: #6c757d !important;
+}
+
+.footer .fab {
+  color: #6c757d;
+}
+
+.footer .fab:hover {
+  color: #007bff;
+}

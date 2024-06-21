@@ -15,8 +15,7 @@ export class HomeComponent implements OnInit {
   constructor(private dialog: MatDialog,private formDataService: DataserviceService) { }
 
   ngOnInit(): void {
-    this.formData = this.formDataService.getFormData();
-
+    
   }
 
   openpopup(): void {
@@ -26,7 +25,6 @@ export class HomeComponent implements OnInit {
       disableClose: false // Prevent closing modal by clicking outside or pressing ESC
     });
 
-    
   }
 
 

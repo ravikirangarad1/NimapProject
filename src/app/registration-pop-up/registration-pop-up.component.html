@@ -1,4 +1,4 @@
-<form class="row g-3 needs-validation" novalidate>
+<form class="row g-3 needs-validation" novalidate [formGroup]="empForm" (ngSubmit)="addData()">
   <div class="col-md-6">
     <div class="col-md-6">
       <!-- Input for uploading photo -->
@@ -13,107 +13,198 @@
         Upload your file
         <input type="file" (change)="onFileSelected($event)" accept="image/*" />
       </label>
+      <!-- Error message for image dimensions -->
+      <div *ngIf="imageError" class="text-danger">{{ imageError }}</div>
     </div>
-    
-    <!-- <div>
-      <label for="profilePhoto" class="form-label">Upload your photo</label>
-      <input type="file" class="form-control" id="profilePhoto" accept="image/*">
-    </div> -->
   </div>
+
   <div class="col-md-6">
     <div class="col-md-12">
-      <label for="validationCustom01" class="form-label">First name</label>
-      <input type="text" class="form-control" id="validationCustom01" value="Mark" required>
-      <div class="valid-feedback">
-        Looks good!
+      <div class="form-group">
+        <label for="validationCustom01" class="form-label">First name</label>
+        <input type="text" class="form-control" id="validationCustom01" formControlName="firstName">
+        <div *ngIf="empForm.get('firstName')?.touched && empForm.get('firstName')?.errors">
+          <ng-container *ngIf="empForm.get('firstName')?.errors?.required">
+            <span class="text-danger">This field is required.</span>
+          </ng-container>
+          <ng-container *ngIf="empForm.get('firstName')?.errors?.pattern">
+            <span class="text-danger">Only alphabetic characters allowed.</span>
+          </ng-container>
+          <ng-container *ngIf="empForm.get('firstName')?.errors?.maxlength">
+            <span class="text-danger">Firstname length should not exceed 20 characters.</span>
+          </ng-container>
+        </div>
       </div>
     </div>
+
     <div class="col-md-12">
       <label for="validationCustom02" class="form-label">Last name</label>
-      <input type="text" class="form-control" id="validationCustom02" value="Otto" required>
-      <div class="valid-feedback">
-        Looks good!
+      <input type="text" class="form-control" id="validationCustom02" required formControlName="lastName">
+
+      <div *ngIf="empForm.get('lastName')?.errors" class="text-danger" [ngStyle]="{'color':'red'}">
+        <ng-container *ngIf="empForm.get('lastName')?.touched && empForm.get('lastName')?.errors?.['required']">
+          <span>this field is required</span>
+        </ng-container>
       </div>
+
     </div>
     <div class="mb-3">
       <label for="exampleInputEmail1" class="form-label">Email address</label>
-      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+        formControlName="email">
       <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+
+      <div *ngIf="empForm.get('email')?.errors" class="text-danger" [ngStyle]="{'color':'red'}">
+        <ng-container *ngIf="empForm.get('email')?.touched && empForm.get('email')?.errors?.['required']">
+          <span>this field is required</span>
+        </ng-container>
+        <ng-container *ngIf="empForm.get('email')?.touched && empForm.get('email')?.errors?.['email']">
+          <span>Invalid email format</span>
+        </ng-container>
+      </div>
+
     </div>
     <div class="form-group">
       <label for="phone">Phone Number</label>
-      <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number">
+      <input type="tel" class="form-control" id="phone" placeholder="Enter your phone number"
+        formControlName="phonenumber" maxlength="10" (input)="sanitizeInput($event)">
+      <div *ngIf="empForm.get('phonenumber')?.errors" class="text-danger" [ngStyle]="{'color':'red'}">
+        <ng-container *ngIf="empForm.get('phonenumber')?.touched && empForm.get('phonenumber')?.errors?.['required']">
+          <span>this field is required</span>
+        </ng-container>
+        <ng-container
+          *ngIf="empForm.get('phonenumber')?.touched && empForm.get('phonenumber')?.errors?.['InvalidPhone']">
+          <span>Phone number should be 10 digit only</span><br>
+        </ng-container>
+      </div>
+
     </div>
 
     <div class="col-md-6">
       <div class="col-md-12">
         <label for="ageSlider" class="form-label">Age</label>
-        <input type="range" class="form-range" id="ageSlider" min="20" max="60" step="1" value="20" (change)="onAgeChange($event)" />
+        <input type="range" class="form-range" id="ageSlider" min="20" max="60" step="1" value="20"
+          (change)="onAgeChange($event)" />
         <span>{{ selectedAge }}</span> years <!-- Display selected age dynamically -->
       </div>
     </div>
 
     <div class="col-12">
       <label for="validationCustom04" class="form-label">State</label>
-      <select class="form-select" id="validationCustom04" required>
-        <option selected disabled value="">Choose...</option>
-        <option>...</option>
+      <select class="form-select" id="validationCustom04" required formControlName="state">
+        <option selected disabled value="">State</option>
+        <option>Maharashtra</option>
+        <option>Andhra Pradesh</option>
+        <option>Arunachal Pradesh</option>
+        <option>Assam</option>
+        <option>Bihar</option>
+        <option>Chhattisgarh</option>
+        <option>Goa</option>
+        <option>Gujarat</option>
       </select>
-      <div class="invalid-feedback">
-        Please select a valid state.
+      <div *ngIf="empForm.get('state')?.errors" class="text-danger" [ngStyle]="{'color':'red'}">
+        <ng-container *ngIf="empForm.get('state')?.touched && empForm.get('state')?.errors?.['required']">
+          <span>this field is required</span>
+        </ng-container>
       </div>
     </div>
     <div class="col-12">
       <label for="validationCustom04" class="form-label">Country</label>
       <select class="form-select" id="validationCustom04" required>
-        <option selected disabled value="">Choose...</option>
-        <option>...</option>
+        <option selected disabled value="">Country</option>
+        <option>Afghanistan</option>
+        <option>India</option>
+        <option>Austrolia</option>
+        <option>England</option>
+        <option>Us</option>
+        <option>Kuwait</option>
+        <option>Armenia</option>
       </select>
       <div class="invalid-feedback">
         Please select a valid state.
       </div>
     </div>
+
     <div class="col-md-12">
       <div class="form-group">
         <label for="address">Address</label>
-        <input type="text" class="form-control" id="address" placeholder="Enter your address">
+        <select class="form-control" id="address" formControlName="addressType">
+          <option value="" disabled selected>Select address type</option>
+          <option value="Home">Home</option>
+          <option value="Company">Company</option>
+        </select>
       </div>
     </div>
-    <div class="col-md-12">
-      <div class="form-group">
-        <label for="tags">Tags</label>
-        <input type="text" class="form-control" id="tags" list="tagOptions" placeholder="Enter tags">
-        <datalist id="tagOptions">
-          <option value="HTML">
-          <option value="CSS">
-          <option value="JavaScript">
-          <option value="Angular">
-          <option value="React">
-          <!-- Add more options as needed -->
-        </datalist>
+
+    <div *ngIf="empForm.get('addressType')?.value === 'Home'">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="homeAddress1">Home Address 1</label>
+          <input type="text" class="form-control" id="homeAddress1" formControlName="homeAddress1"
+            placeholder="Enter Address 1">
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="homeAddress2">Home Address 2</label>
+          <input type="text" class="form-control" id="homeAddress2" formControlName="homeAddress2"
+            placeholder="Enter Address 2">
+        </div>
       </div>
     </div>
-    <div class="col-md-3">
-      <label for="validationCustom05" class="form-label">Zip</label>
-      <input type="text" class="form-control" id="validationCustom05" required>
-      <div class="invalid-feedback">
-        Please provide a valid zip.
+
+    <div *ngIf="empForm.get('addressType')?.value === 'Company'">
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="companyAddress1">Company Address 1</label>
+          <input type="text" class="form-control" id="companyAddress1" formControlName="companyAddress1"
+            placeholder="Enter Company Address 1">
+        </div>
+      </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label for="companyAddress2">Company Address 2</label>
+          <input type="text" class="form-control" id="companyAddress2" formControlName="companyAddress2"
+            placeholder="Enter Company Address 2">
+        </div>
       </div>
     </div>
+
+
+    <label class="form-label">Tags</label>
+    <div class="wrapper">
+      <div class="input">
+        <div *ngFor="let pill of pills" class="pill">
+          {{ pill }}
+          <span (click)="removePill(pill)">x</span>
+        </div>
+        <input type="text" [(ngModel)]="value" (ngModelChange)="changeValue($event)" (blur)="changeFocussed(false)"
+          (focus)="changeFocussed(true)" (keyup.enter)="addPill(value)">
+      </div>
+
+      <ul *ngIf="filteredList?.length && isFocussed" class="dropdown">
+        <li *ngFor="let item of filteredList" (click)="addPill(item)">{{ item }}</li>
+      </ul>
+    </div>
+
     <div class="col-12">
       <div class="form-check">
-        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
+        <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required
+          formControlName="newsletter">
         <label class="form-check-label" for="invalidCheck">
           Subscribe to newsletter
         </label>
-        <div class="invalid-feedback">
-          You must agree before submitting.
+        <div *ngIf="empForm.get('newsletter')?.errors" class="text-danger" [ngStyle]="{'color':'red'}">
+          <ng-container *ngIf="empForm.get('newsletter')?.touched && empForm.get('newsletter')?.errors?.['required']">
+            <span>this field is required</span>
+          </ng-container>
         </div>
+
       </div>
     </div>
   </div>
   <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-    <button class="btn btn-light me-md-2" type="button">Cancel</button>
-    <button class="btn btn-primary" type="button">Submit</button>
+    <button class="btn btn-light me-md-2" type="button" mat-dialog-close>Cancel</button>
+    <button class="btn btn-primary" type="submit" mat-dialog-close [disabled]="empForm.invalid">Submit</button>
   </div>
 </form>
